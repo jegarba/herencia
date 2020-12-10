@@ -5,7 +5,7 @@ public class PersonaManager {
 	ServicioPersona serv;
 	
 	public PersonaManager(){
-		serv  = new ServicioPersonaBDD(); 
+		serv  = new ServicioPersonaArchivos(); 
 	}
 	
 	public void insertarPersona(Persona persona){
