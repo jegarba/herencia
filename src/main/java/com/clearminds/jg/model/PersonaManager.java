@@ -12,22 +12,12 @@ public class PersonaManager {
 
 	ServicioPersona serv;
 
-
-	
 	public PersonaManager() throws InstaceException {
-		
-		File f=new File("config.properties");
-		System.out.println("ruta:"+f.getAbsoluteFile());
-		Properties p = new Properties();
-		
-		
 		try {
-			p.load(new FileReader(f.getAbsoluteFile()));
-			System.out.println(p.getProperty("servicio"));
-			
-			Class<?> clase = Class.forName(p.getProperty("servicio"));
+			String nombre = leerPropiedad("servicio");
+			Class<?> clase = Class.forName(nombre);
 			serv = (ServicioPersona) clase.newInstance();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new InstaceException("Error al obtener una instancia de ServicioPersona");
@@ -38,4 +28,23 @@ public class PersonaManager {
 		serv.insertar(persona);
 	}
 
+	public static String leerPropiedad(String propiedad) {
+
+		File f = new File("config.properties");
+		System.out.println("ruta:" + f.getAbsoluteFile());
+		Properties p = new Properties();
+
+		try {
+			p.load(new FileReader(f.getAbsoluteFile()));
+			System.out.println(p.getProperty(propiedad));
+			return p.getProperty(propiedad);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			System.out.println("no se encontro el archivo");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+
+	}
 }
