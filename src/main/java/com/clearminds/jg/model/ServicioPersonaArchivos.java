@@ -3,18 +3,18 @@ package com.clearminds.jg.model;
 public class ServicioPersonaArchivos implements ServicioPersona{
 
 	public boolean insertar(Persona persona) {
-		// TODO Auto-generated method stub
-		return false;
+		System.out.println("insertando persona en un archivo" + persona);
+		return true;
 	}
 
 	public boolean actualizar(Persona persona) {
-		// TODO Auto-generated method stub
-		return false;
+		System.out.println("Actualizando persona en un archivo" + persona);
+		return true;
 	}
 
 	public boolean eliminar(Persona persona) {
-		// TODO Auto-generated method stub
-		return false;
+		System.out.println("Eliminando persona en un archivo" + persona);
+		return true;
 	}
 
 }
